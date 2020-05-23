@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render ExpenseListItem from a test expense 1`] = `
+<div>
+  <[object Object]
+    to="/edit/1"
+  >
+    <h5>
+      one
+    </h5>
+  </[object Object]>
+  <p>
+    £
+    1.00
+     - 
+    1st Jan, 1970
+     
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;

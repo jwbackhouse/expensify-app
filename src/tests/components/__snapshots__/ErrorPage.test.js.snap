@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render ErrorPage 1`] = `
+<div>
+  <p>
+    Doh! 404
+  </p>
+  <[object Object]
+    to="/"
+  >
+    Go home
+  </[object Object]>
+</div>
+`;
