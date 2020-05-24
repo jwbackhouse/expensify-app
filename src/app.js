@@ -15,6 +15,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 // Set up store
 const store = configureStore();
+console.log('Dev tools working fine');
 
 // Render output
 const jsx = (
