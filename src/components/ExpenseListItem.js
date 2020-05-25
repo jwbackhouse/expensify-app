@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { removeExpense } from '../actions/expenses';
 import moment from 'moment';
+import numeral from 'numeral';
+// Set GB currency
+import "numeral/locales/en-gb";
+numeral.locale('en-gb');
     
 export const ExpenseListItem = ({dispatch,description,amount,createdAt,id}) => {
   const link = `/edit/${ id }`;
@@ -11,7 +15,11 @@ export const ExpenseListItem = ({dispatch,description,amount,createdAt,id}) => {
       <Link to = { link }>
         <h5>{ description }</h5>
       </Link>
-      <p>£{ (amount/100).toFixed(2) } - { moment(createdAt).format('Do MMM, YYYY') } </p>
+      <p>
+        { numeral(amount/100).format('$0,0.00') }
+         -
+        { moment(createdAt).format('Do MMM, YYYY') }
+      </p>
       <button onClick = {() => {
         dispatch(removeExpense({ id }));
       }}>Delete</button>

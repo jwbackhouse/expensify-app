@@ -10,11 +10,9 @@ exports[`Should render ExpenseListItem from a test expense 1`] = `
     </h5>
   </[object Object]>
   <p>
-    £
-    1.00
-     - 
+    £1.00
+    -
     1st Jan, 1970
-     
   </p>
   <button
     onClick={[Function]}
