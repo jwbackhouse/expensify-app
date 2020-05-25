@@ -8,7 +8,7 @@ module.exports = (env) => {
   return {
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname,'public'),
+      path: path.join(__dirname,'public','dist'),
       filename: 'bundle.js'
     },
     module: {
@@ -38,11 +38,12 @@ module.exports = (env) => {
     plugins: [
       CSSExtract
     ],
-  devtool: isProduction ? 'source-map' : 'inline-source-map',    // use production-suitable version if running for production (see webpack docs)
+    devtool: isProduction ? 'source-map' : 'inline-source-map',    // use production-suitable version if running for production (see webpack docs)
     devServer: {
       contentBase: path.join(__dirname,'public'),
       host: '100.115.92.10',
-      historyApiFallback:true
+      historyApiFallback:true,
+      publicPath: '/dist/'    // directory containing bundled assets
     }
   };
 };
