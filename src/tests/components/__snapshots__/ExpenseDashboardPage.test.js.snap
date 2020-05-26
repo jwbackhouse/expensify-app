@@ -6,6 +6,7 @@ exports[`Should render DashboardPage 1`] = `
     This is the homepage
   </p>
   <Connect(ExpenseListFilter) />
+  <Connect(ExpensesSummary) />
   <Connect(ExpenseList) />
 </div>
 `;

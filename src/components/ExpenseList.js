@@ -6,14 +6,11 @@ import visibleExpenses from '../selectors/expenses.js';
 // Render an ExpenseListItem component for each expense
 export const ExpenseList = (props) => (
   <div>
-    {
-      props.expenses.length === 0 ? (
-        <p>No expenses yet</p>
-      ) : (
-        props.expenses.map((expense) => {
-          return <ExpenseListItem key = { expense.id } {...expense } />
+    { props.expenses.length === 0
+      ? <p>No expenses yet</p>
+      : props.expenses.map((expense) => {
+          return <ExpenseListItem key = { expense.id } { ...expense }/>
         })
-      )
     }
   </div>
 );
