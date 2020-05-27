@@ -11,6 +11,6 @@ test('Should render correct message for single expense', () => {
 
 test('Should render correct message for multiple expenses', () => {
   const wrapper = shallow(<ExpensesSummary expenses={testExpenses}/>);
-  expect(wrapper.text()).toEqual('Viewing 3 expense totalling £3.10.');
+  expect(wrapper.text()).toEqual('Viewing 3 expenses totalling £3.10.');
   expect(wrapper).toMatchSnapshot();
 })

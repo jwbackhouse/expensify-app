@@ -8,10 +8,10 @@ import configureStore from './store/configureStore';
 import { addExpense, removeExpense, editExpense } from './actions/expenses';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from './actions/filters';
 import viewVisible from './selectors/expenses.js';
-
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import './firebase/firebase';
 
 // Set up store
 const store = configureStore();
@@ -25,3 +25,5 @@ const jsx = (
 );
 
 ReactDOM.render(jsx,document.getElementById('body'));
+
+//   "react-dom": "16.13.1",
