@@ -14,22 +14,22 @@ exports[`Should render ExpenseList with testExpenses 1`] = `
     amount={100}
     createdAt={0}
     description="one"
-    id={1}
-    key="1"
+    id="123"
+    key="123"
   />
   <Connect(ExpenseListItem)
     amount={200}
     createdAt={-345600000}
     description="two"
-    id={2}
-    key="2"
+    id="456"
+    key="456"
   />
   <Connect(ExpenseListItem)
     amount={10}
     createdAt={345600000}
     description="three"
-    id={3}
-    key="3"
+    id="789"
+    key="789"
   />
 </div>
 `;

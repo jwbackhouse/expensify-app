@@ -2,12 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import moment from 'moment';
+// import moment from 'moment';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { addExpense, removeExpense, editExpense } from './actions/expenses';
-import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from './actions/filters';
-import viewVisible from './selectors/expenses.js';
+import { startSetExpenses } from './actions/expenses';
+// import { setTextFilter } from './actions/filters';
+// import viewVisible from './selectors/expenses.js';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -24,6 +24,8 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(jsx,document.getElementById('body'));
+ReactDOM.render(<p>Loading...</p>,document.getElementById('body'));
 
-//   "react-dom": "16.13.1",
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(jsx,document.getElementById('body'));
+});

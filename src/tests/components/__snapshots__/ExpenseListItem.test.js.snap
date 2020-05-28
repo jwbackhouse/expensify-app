@@ -3,7 +3,7 @@
 exports[`Should render ExpenseListItem from a test expense 1`] = `
 <div>
   <[object Object]
-    to="/edit/1"
+    to="/edit/123"
   >
     <h5>
       one

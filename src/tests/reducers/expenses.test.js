@@ -54,10 +54,10 @@ test('Should edit an expense based on id', () => {
     expenses[0],
     expenses[1],
     {
-      description:'Updated',
-      amount: 999,
+      description: action.changes.description,
+      amount: action.changes.amount,
       createdAt: moment(0).add(4,'days').valueOf(),
-      id: 3
+      id: expenses[2].id
     }
   ]);
 });

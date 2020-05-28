@@ -14,7 +14,7 @@ export const startAddExpense = (expenseData = {}) => {
       note = 'Blank',
       amount = 0,
       createdAt = 0
-    } = expenseData;   // Using destructuring to extract datat from expenseData rather than doing it in function arguments (as in commented-out ADD_EXPENSE below)
+    } = expenseData;   // Using destructuring to extract data from the expenseData argument rather than doing it in function argument itself (as in commented-out ADD_EXPENSE below)
     const expense = { description, note, amount, createdAt };   // uses deconstructed values from expenseData
     return database.ref('expenses').push(expense).then((ref) => {
       dispatch(addExpense({
@@ -24,7 +24,6 @@ export const startAddExpense = (expenseData = {}) => {
     });
   };
 };
-
 
 // REMOVE EXPENSE
 export const removeExpense = ({ id } = {}) => ({
@@ -38,6 +37,28 @@ export const editExpense = (id, changes) => ({
   id,
   changes
 });
+
+// SET EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value').then((snapshot) => {
+      const dbExpenses = [];
+      snapshot.forEach((childSnapshot) => {
+        const output = childSnapshot.val();
+        dbExpenses.push({
+          id: childSnapshot.key,
+          ...output
+        });
+      });
+      dispatch(setExpenses(dbExpenses));
+    });
+  };
+};
 
 // // ADD_EXPENSE ORIGINAL (pre-Firebase amends)
 // export const addExpense = (
