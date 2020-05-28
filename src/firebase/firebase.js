@@ -17,36 +17,41 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().remove();
+export { firebase, database as default };
 
-const expenses = [{
-  description: 'Expense One',
-  body: 'This is the body',
-  amount: 500,
-  createdAt: '1234'
-},{
-  description: 'Expense Two',
-  body: 'This is the body',
-  amount: 600,
-  createdAt: '5678'
-},{
-  description: 'Expense Three',
-  body: 'This is the body',
-  amount: 200,
-  createdAt: '9101'
-}];
+
+
+// // Setup dummy data for the code below
+// database.ref().remove();
+
+// const expenses = [{
+//   description: 'Expense One',
+//   body: 'This is the body',
+//   amount: 500,
+//   createdAt: '1234'
+// },{
+//   description: 'Expense Two',
+//   body: 'This is the body',
+//   amount: 600,
+//   createdAt: '5678'
+// },{
+//   description: 'Expense Three',
+//   body: 'This is the body',
+//   amount: 200,
+//   createdAt: '9101'
+// }];
 
 // NOTE .push is used to store an array, with each item stored under a unique identifier
-database.ref('expenses').push(expenses[0]);
-database.ref('expenses').push(expenses[1]);
-database.ref('expenses').push(expenses[2]);
+// database.ref('expenses').push(expenses[0]);
+// database.ref('expenses').push(expenses[1]);
+// database.ref('expenses').push(expenses[2]);
 
 
-database.ref('expenses').on('child_changed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-// NOTE:  How to convert Firebase output into an array, using the key as unique identifier
+// // NOTE:  How to convert Firebase output into an array, using the key as unique identifier
 // database.ref('expenses').on('value', (snapshot) => {
 //   const expenses = [];
 //   snapshot.forEach((childSnapshot) => {

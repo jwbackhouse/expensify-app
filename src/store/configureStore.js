@@ -1,14 +1,18 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware,  } from 'redux';
 import expensesReducer from '../reducers/expenses';
 import filtersReducer from '../reducers/filters';
+import thunk from 'redux-thunk'; // allows asynchronous calls to Firebase from actions
+
+// This needed to use thunk alongside dev tools extension
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   const store = createStore (
-    combineReducers({
+    combineReducers({   // Takes object as an argument - with root state name as key, and reducer as the value
       expenses: expensesReducer,
       filters: filtersReducer
     }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()    // Set up redux dev tools
+    composeEnhancers(applyMiddleware(thunk)) // See above
   );
   
   return store;

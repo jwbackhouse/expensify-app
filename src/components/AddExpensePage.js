@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { addExpense } from '../actions/expenses';
+import { startAddExpense } from '../actions/expenses';
 
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
-    this.props.addExpense(expense);    // Add expense to state
+    this.props.startAddExpense(expense);    // Add expense to state
     this.props.history.push('/');    // Redirect on submit (uses in-built method)
   };
   
@@ -23,7 +23,7 @@ export class AddExpensePage extends React.Component {
 
 // Create bespoke dispatch method in order to simplify the above (and make it possible to test with a spy)
 const mapDispatchToProps = (dispatch) => ({
-  addExpense: (expense) => dispatch(addExpense(expense))
+  startAddExpense: (expense) => dispatch(startAddExpense(expense))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);    // first arg is state, second is dispatch

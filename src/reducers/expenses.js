@@ -1,5 +1,6 @@
-/* EXPENSES REDUCER
-Converts old state to new state, based on actions */
+// EXPENSES REDUCER
+//NOTE:Converts old state to new state, based on actions. Must be a 'pure function'
+// Takes state and action as arguments
 const expReducerDefault = [];
 
 export default (state = expReducerDefault, action) => {
