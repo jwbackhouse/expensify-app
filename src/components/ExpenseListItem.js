@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { removeExpense } from '../actions/expenses';
+import { startRemoveExpense } from '../actions/expenses';
 import moment from 'moment';
 import numeral from 'numeral';
 // Set GB currency
@@ -21,7 +21,7 @@ export const ExpenseListItem = ({dispatch,description,amount,createdAt,id}) => {
         { moment(createdAt).format('Do MMM, YYYY') }
       </p>
       <button onClick = {() => {
-        dispatch(removeExpense({ id }));
+        dispatch(startRemoveExpense({id}));
       }}>Delete</button>
     </div>
   );

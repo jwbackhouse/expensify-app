@@ -31,6 +31,15 @@ export const removeExpense = ({ id } = {}) => ({
   id
 });
 
+export const startRemoveExpense = ({id}) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${ id }`).remove().then(() => {
+      dispatch(removeExpense({ id }));
+      dispatch(startSetExpenses());
+    });
+  };
+};
+
 // EDIT EXPENSE
 export const editExpense = (id, changes) => ({
   type: 'EDIT_EXPENSE',
@@ -60,21 +69,4 @@ export const startSetExpenses = () => {
   };
 };
 
-// // ADD_EXPENSE ORIGINAL (pre-Firebase amends)
-// export const addExpense = (
-//   {                         // set defaults for each key
-//     description = 'Blank',
-//     note = 'Blank',
-//     amount = 0,
-//     createdAt = 0
-//   } = {}                    // default to empty object
-// ) => ({
-//   type: 'ADD_EXPENSE',
-//   expense: {
-//     id: uuid(),
-//     description,
-//     note,
-//     amount,
-//     createdAt
-//   }
-// });
+// // ADD_EXPENSE ORIGI

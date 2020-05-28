@@ -4,15 +4,15 @@ import { EditPage } from '../../components/EditPage';
 import testExpenses from '../fixtures/testExpenses';
 
 // Run for each test
-let wrapper, history, editExpense, removeExpense;
+let wrapper, history, editExpense, startRemoveExpense;
 beforeEach(() => {
   history = {push: jest.fn()};
   editExpense = jest.fn();
-  removeExpense = jest.fn();
+  startRemoveExpense = jest.fn();
   wrapper = shallow(
     <EditPage
       editExpense={ editExpense }
-      removeExpense={ removeExpense }
+      startRemoveExpense={ startRemoveExpense }
       history={ history }
       expense = {testExpenses[0]}
     />
@@ -33,5 +33,5 @@ test('Should handle onSubmit to edit an expense', () => {
 test('Should handle onClick to remove expense', () => {
   wrapper.find('button').simulate('click');
   expect(history.push).lastCalledWith('/');
-  expect(removeExpense).lastCalledWith(testExpenses[0].id);
+  expect(startRemoveExpense).lastCalledWith(testExpenses[0].id);
 })
