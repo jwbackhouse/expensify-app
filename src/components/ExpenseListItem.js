@@ -21,7 +21,7 @@ export const ExpenseListItem = ({dispatch,description,amount,createdAt,id}) => {
         { moment(createdAt).format('Do MMM, YYYY') }
       </p>
       <button onClick = {() => {
-        dispatch(startRemoveExpense({id}));
+        dispatch(startRemoveExpense({ id }));
       }}>Delete</button>
     </div>
   );

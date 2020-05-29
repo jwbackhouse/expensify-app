@@ -5,7 +5,7 @@ import { startAddExpense } from '../actions/expenses';
 
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
-    this.props.startAddExpense(expense);    // Add expense to state
+    this.props.startAddExpense(expense);    // Add expense to state under user's account
     this.props.history.push('/');    // Redirect on submit (uses in-built method)
   };
   

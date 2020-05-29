@@ -50,7 +50,7 @@ export class EditPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
-  startRemoveExpense: (id) => dispatch(startRemoveExpense({id}))
+  startRemoveExpense: (id) => dispatch(startRemoveExpense({ id }))
 })
 
 const mapStateToProps= (state, props) => ({

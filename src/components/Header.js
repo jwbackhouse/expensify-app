@@ -11,13 +11,13 @@ export const Header = ({startLogout}) => (
     </h1>
     <ul>
       <li>
-        <NavLink to='/dashboard' activeClassName='is-active' exact={true}>Dashboard</NavLink>
+        <NavLink to='/dashboard' activeClassName='is-active'>Dashboard</NavLink>
       </li>
       <li>
-        <NavLink to='/create' activeClassName='is-active' exact={true}>Create</NavLink>
+        <NavLink to='/create' activeClassName='is-active'>Create</NavLink>
       </li>
       <li>
-        <NavLink to='/help' activeClassName='is-active' exact={true}>Help</NavLink>
+        <NavLink to='/help' activeClassName='is-active'>Help</NavLink>
       </li>
     </ul>
     <button onClick={ startLogout }>Logout</button>

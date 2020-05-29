@@ -8,7 +8,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-  return (dispatch) => {    // Redux-thunk allows us to return a function, which is called with dispatch
+  return (dispatch, getState) => {    // Redux-thunk allows us to return a function, which is called with dispatch
+    const uid = getState().auth.uid;
     const {
       description = 'Blank',
       note = '',
@@ -16,7 +17,7 @@ export const startAddExpense = (expenseData = {}) => {
       createdAt = 0
     } = expenseData;   // Using destructuring to extract data from the expenseData argument rather than doing it in function argument itself (as in commented-out ADD_EXPENSE below)
     const expense = { description, note, amount, createdAt };   // uses deconstructed values from expenseData
-    return database.ref('expenses').push(expense).then((ref) => {
+    return database.ref(`users/${ uid }/expenses`).push(expense).then((ref) => {
       dispatch(addExpense({
         id: ref.key,    // .then callback from .push gets called with ref, so can get id from this
         ...expense
@@ -32,8 +33,9 @@ export const removeExpense = ({ id } = {}) => ({
 });
 
 export const startRemoveExpense = ({id}) => {
-  return (dispatch) => {
-    return database.ref(`expenses/${ id }`).remove().then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${ uid }/expenses/${ id }`).remove().then(() => {
       dispatch(removeExpense({ id }));
     });
   };
@@ -47,8 +49,9 @@ export const editExpense = (id, changes) => ({
 });
 
 export const startEditExpense = (id, changes) => {
-  return (dispatch) => {
-    return database.ref(`expenses/${ id }`).update(changes).then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${ uid }/expenses/${ id }`).update(changes).then(() => {
       dispatch(editExpense(id, changes));
     });
   };
@@ -61,8 +64,9 @@ export const setExpenses = (expenses) => ({
 });
 
 export const startSetExpenses = () => {
-  return (dispatch) => {
-    return database.ref('expenses').once('value').then((snapshot) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${ uid }/expenses`).once('value').then((snapshot) => {
       const dbExpenses = [];
       snapshot.forEach((childSnapshot) => {
         const output = childSnapshot.val();

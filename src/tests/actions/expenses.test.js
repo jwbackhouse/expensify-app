@@ -17,6 +17,10 @@ import database from '../../firebase/firebase';
 // Setup mock store - pass in thunk as middleware
 const mockStore = configureMockStore([thunk]);
 
+// Set up dummy user id
+const uid = '123abc';
+const defaultAuthState = { auth: { uid } };    // Have to pass in value for uid into mock store as it's expected in the function
+
 
 // NOTE using 'toEqual' rather than 'toBe' since we are comparing objects not strings/numbers/boolean so want to check strict equality
 
@@ -26,7 +30,7 @@ beforeEach((done) => {
   testExpenses.forEach(({ id, description, note = '', amount, createdAt }) => {    // deconstruct testExpenses objects
     expenseData[id] = { description, amount, createdAt };
   });
-  database.ref('expenses').set(expenseData).then(() => done());    // Call done() once database promise has resolved
+  database.ref(`users/${ uid }/expenses`).set(expenseData).then(() => done());    // Call done() once database promise has resolved
 });
 
 test ('Should setup remove expense action object', () => {
@@ -38,7 +42,7 @@ test ('Should setup remove expense action object', () => {
 });
 
 test('Should remove an item from Firebase', (done) => {
-  const store = mockStore({});
+  const store = mockStore(defaultAuthState);
   const expenseID = testExpenses[1].id;
   
   store.dispatch(startRemoveExpense({ id: expenseID })).then(() =>{
@@ -47,7 +51,7 @@ test('Should remove an item from Firebase', (done) => {
       type: 'REMOVE_EXPENSE',
       id:expenseID
     });
-    return database.ref(`expenses/${ expenseID }`).once('value');
+    return database.ref(`users/${ uid }/expenses/${ expenseID }`).once('value');
   }).then((snapshot) => {
     expect(snapshot.val()).toBeFalsy;   // Inbuilt alternative to toBe(null)
     done();
@@ -66,7 +70,7 @@ test ('Should setup edit expense action object', () => {
 });
 
 test('Should edit an expense in Firebase', (done) => {
-  const store = mockStore({});
+  const store = mockStore(defaultAuthState);
   const id = testExpenses[2].id;
   const changes = {
     amount: 98765,
@@ -79,7 +83,7 @@ test('Should edit an expense in Firebase', (done) => {
       id,
       changes
     });
-    return database.ref(`expenses/${ id }`).once('value');
+    return database.ref(`users/${ uid }/expenses/${ id }`).once('value');
   }).then((snapshot) => {
     const editedExpense = snapshot.val();
     expect(editedExpense.amount).toEqual(changes.amount);
@@ -96,7 +100,7 @@ test ('Should setup add expense action object', () => {
 });
 
 test('Should add expense to Firebase and store', (done) => {    // calling second arg with 'done' forces jest to wait until done() is called - which is how we test async functions
-  const store = mockStore({});
+  const store = mockStore(defaultAuthState);
   const expenseData = {
     description: 'Test title',
     note: 'Test notes',
@@ -121,7 +125,7 @@ test('Should add expense to Firebase and store', (done) => {    // calling secon
     // });
     
     // NOTE uses promise chaining approach - NB need to return a promise, the output of which is passed into .then only when it resolves
-    return database.ref(`expenses/${ actions[0].expense.id }`).once('value');
+    return database.ref(`users/${ uid }/expenses/${ actions[0].expense.id }`).once('value');
   }).then((snapshot) => {
     expect(snapshot.val()).toEqual(expenseData);
     done();   // Have to move done() in here as it's an async call
@@ -129,7 +133,7 @@ test('Should add expense to Firebase and store', (done) => {    // calling secon
 });
 
 test('Should add expense to Firebase and store using default values', (done) => {
-  const store = mockStore({});
+  const store = mockStore(defaultAuthState);
   const expenseDefaults = {
     description: 'Blank',
     note: '',
@@ -147,7 +151,7 @@ test('Should add expense to Firebase and store using default values', (done) => 
       }
     });
     
-    return database.ref(`expenses/${ actions[0].expense.id }`).once('value');
+    return database.ref(`users/${ uid }/expenses/${ actions[0].expense.id }`).once('value');
   }).then((snapshot) => {
     expect(snapshot.val()).toEqual(expenseDefaults);
     done();
@@ -172,7 +176,7 @@ test('Should set expenses', () => {
 })
 
 test('Should fetch expenses from Firebase', (done) => {
-  const store = mockStore({});
+  const store = mockStore(defaultAuthState);
 
   store.dispatch(startSetExpenses()).then(() => {
     const actions = store.getActions();

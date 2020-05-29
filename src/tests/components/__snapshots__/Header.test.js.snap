@@ -13,7 +13,6 @@ exports[`Should render Header correctly 1`] = `
     <li>
       <[object Object]
         activeClassName="is-active"
-        exact={true}
         to="/dashboard"
       >
         Dashboard
@@ -22,7 +21,6 @@ exports[`Should render Header correctly 1`] = `
     <li>
       <[object Object]
         activeClassName="is-active"
-        exact={true}
         to="/create"
       >
         Create
@@ -31,7 +29,6 @@ exports[`Should render Header correctly 1`] = `
     <li>
       <[object Object]
         activeClassName="is-active"
-        exact={true}
         to="/help"
       >
         Help

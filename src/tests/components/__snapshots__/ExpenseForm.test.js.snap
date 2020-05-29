@@ -323,7 +323,7 @@ exports[`Should render error for invalid form submission 1`] = `
 exports[`Should render error for invalid form submission 2`] = `
 <div>
   <p>
-    this.state.error
+    Please complete both the description and amount
   </p>
   <form
     onSubmit={[Function]}
