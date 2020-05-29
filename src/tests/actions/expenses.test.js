@@ -1,6 +1,15 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, addExpense, editExpense, removeExpense, startRemoveExpense, setExpenses, startSetExpenses } from '../../actions/expenses';
+import {
+  addExpense,
+  startAddExpense,
+  editExpense,
+  startEditExpense,
+  removeExpense,
+  startRemoveExpense,
+  setExpenses,
+  startSetExpenses,
+} from '../../actions/expenses';
 import expensesReducer from '../../reducers/expenses';
 import testExpenses from '../fixtures/testExpenses';
 import database from '../../firebase/firebase';
@@ -15,7 +24,7 @@ const mockStore = configureMockStore([thunk]);
 beforeEach((done) => {
   const expenseData = {};
   testExpenses.forEach(({ id, description, note = '', amount, createdAt }) => {    // deconstruct testExpenses objects
-    expenseData[id] = { description, amount, createdAt }
+    expenseData[id] = { description, amount, createdAt };
   });
   database.ref('expenses').set(expenseData).then(() => done());    // Call done() once database promise has resolved
 });
@@ -53,6 +62,28 @@ test ('Should setup edit expense action object', () => {
     changes: {
       description:'abc'
     }
+  });
+});
+
+test('Should edit an expense in Firebase', (done) => {
+  const store = mockStore({});
+  const id = testExpenses[2].id;
+  const changes = {
+    amount: 98765,
+  };
+  
+  store.dispatch(startEditExpense(id, changes)).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: 'EDIT_EXPENSE',
+      id,
+      changes
+    });
+    return database.ref(`expenses/${ id }`).once('value');
+  }).then((snapshot) => {
+    const editedExpense = snapshot.val();
+    expect(editedExpense.amount).toEqual(changes.amount);
+    done();
   });
 });
 
@@ -101,7 +132,7 @@ test('Should add expense to Firebase and store using default values', (done) => 
   const store = mockStore({});
   const expenseDefaults = {
     description: 'Blank',
-    note: 'Blank',
+    note: '',
     amount: 0,
     createdAt: 0
   };
@@ -152,6 +183,8 @@ test('Should fetch expenses from Firebase', (done) => {
     done();
   });
 });
+
+  
 
 
 // test ('Should setup add expense action object with default values', () => {

@@ -11,7 +11,7 @@ export const startAddExpense = (expenseData = {}) => {
   return (dispatch) => {    // Redux-thunk allows us to return a function, which is called with dispatch
     const {
       description = 'Blank',
-      note = 'Blank',
+      note = '',
       amount = 0,
       createdAt = 0
     } = expenseData;   // Using destructuring to extract data from the expenseData argument rather than doing it in function argument itself (as in commented-out ADD_EXPENSE below)
@@ -35,7 +35,6 @@ export const startRemoveExpense = ({id}) => {
   return (dispatch) => {
     return database.ref(`expenses/${ id }`).remove().then(() => {
       dispatch(removeExpense({ id }));
-      dispatch(startSetExpenses());
     });
   };
 };
@@ -46,6 +45,14 @@ export const editExpense = (id, changes) => ({
   id,
   changes
 });
+
+export const startEditExpense = (id, changes) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${ id }`).update(changes).then(() => {
+      dispatch(editExpense(id, changes));
+    });
+  };
+};
 
 // SET EXPENSES
 export const setExpenses = (expenses) => ({
@@ -68,5 +75,3 @@ export const startSetExpenses = () => {
     });
   };
 };
-
-// // ADD_EXPENSE ORIGI

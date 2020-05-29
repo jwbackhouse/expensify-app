@@ -44,7 +44,7 @@ test('Should update state note on input change', () => {
   wrapper.find('textarea').simulate('change', {
     target: {value}    // pass second argument for 'e.target.value'
   });
-  expect(wrapper.state('notes')).toBe(value);
+  expect(wrapper.state('note')).toBe(value);
 });
 
 

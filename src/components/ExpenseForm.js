@@ -7,7 +7,7 @@ export default class ExpenseForm extends React.Component {
   state = {
     description: this.props.expense ? this.props.expense.description : '',
     amount: this.props.expense ? (this.props.expense.amount / 100).toString() : '',
-    notes: this.props.expense ? this.props.expense.notes : '',
+    note: this.props.expense ? this.props.expense.note : '',
     createdAt: this.props.expense ? moment(this.props.expense.createdAt) : moment(),
     calendarFocused: false,
     error: ''
@@ -19,10 +19,10 @@ export default class ExpenseForm extends React.Component {
     this.setState(() => ({ description }));
   };
   
-  // Ditto for notes
+  // Ditto for note
   onNoteChange = (e) => {
-    const notes = e.target.value;
-    this.setState(() => ({ notes }));
+    const note = e.target.value;
+    this.setState(() => ({ note }));
   };
   
   // Ditto for amount
@@ -55,7 +55,7 @@ export default class ExpenseForm extends React.Component {
         description: this.state.description,
         amount: parseFloat(this.state.amount,10) * 100,    // Convert amount string to number and convert into pence
         createdAt: this.state.createdAt.valueOf(),   // Convert moment object to Unix ms
-        notes: this.state.notes
+        note: this.state.note
       });
     }
   };
@@ -90,7 +90,7 @@ export default class ExpenseForm extends React.Component {
           />
           <textarea
             type = 'text'
-            value = {this.state.notes}
+            value = {this.state.note}
             placeholder = 'Enter details here'
             onChange = { this.onNoteChange }
           ></textarea>
