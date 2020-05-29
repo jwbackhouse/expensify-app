@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /data/data/com.termux/files/usr/bin/yarn info webpack-dev-server
+  /usr/bin/node /data/data/com.termux/files/usr/bin/yarn add history @4.7.2
 
 PATH: 
   /data/data/com.termux/files/usr/bin:/data/data/com.termux/files/usr/bin/applets
@@ -14,12 +14,17 @@ Platform:
   android ia32
 
 Trace: 
-  SyntaxError: /home/react-course/expensify-app/package.json: Unexpected end of JSON input
-      at JSON.parse (<anonymous>)
-      at /data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@4.7.2: Request "https://registry.yarnpkg.com/@4.7.2" returned a 405
+      at Request.params.callback [as _callback] (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:66996:18)
+      at Request.self.callback (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:140748:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:141720:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:141642:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1198:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {
@@ -83,7 +88,9 @@ npm manifest:
       "enzyme-to-json": "^3.4.4",
       "jest": "^26.0.1",
       "react-test-renderer": "16.0.0",
-      "webpack-de
+      "webpack-dev-server": "3.11.0"
+    }
+  }
 
 yarn manifest: 
   No manifest

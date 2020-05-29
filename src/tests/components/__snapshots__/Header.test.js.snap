@@ -4,7 +4,7 @@ exports[`Should render Header correctly 1`] = `
 <div>
   <h1>
     <[object Object]
-      to="/"
+      to="/dashboard"
     >
       Expensify
     </[object Object]>
@@ -14,7 +14,7 @@ exports[`Should render Header correctly 1`] = `
       <[object Object]
         activeClassName="is-active"
         exact={true}
-        to="/"
+        to="/dashboard"
       >
         Dashboard
       </[object Object]>
@@ -38,5 +38,10 @@ exports[`Should render Header correctly 1`] = `
       </[object Object]>
     </li>
   </ul>
+  <button
+    onClick={[MockFunction]}
+  >
+    Logout
+  </button>
 </div>
 `;
