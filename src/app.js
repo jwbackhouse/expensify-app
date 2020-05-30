@@ -6,16 +6,18 @@ import AppRouter, { history } from './routers/AppRouter';
 import { login, logout } from './actions/auth';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
+import { firebase } from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase';
+import './styles/react-dates-override.css';
 
 // Set up store
 const store = configureStore();
 console.log('Dev tools working fine');
 
-// Render output
+// Setup rendering
 const jsx = (
   <Provider store={ store }>
     <AppRouter />
@@ -29,6 +31,10 @@ const renderApp = () => {
   }
 }
 
+// Render loading page
+ReactDOM.render(<LoadingPage />,document.getElementById('body'));
+
+// Authenticate user
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('Logged in.')
@@ -48,4 +54,3 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
-ReactDOM.render(<p>Loading...</p>,document.getElementById('body'));

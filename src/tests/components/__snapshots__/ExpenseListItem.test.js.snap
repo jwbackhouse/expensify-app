@@ -3,21 +3,26 @@
 exports[`Should render ExpenseListItem from a test expense 1`] = `
 <div>
   <[object Object]
+    className="list-item"
     to="/edit/123"
   >
-    <h5>
-      one
-    </h5>
+    <div>
+      <h3
+        className="list-item__title"
+      >
+        one
+      </h3>
+      <span
+        className="list-item__subtitle"
+      >
+        1st Jan, 1970
+      </span>
+    </div>
+    <h3
+      className="list-item__amount"
+    >
+      £1.00
+    </h3>
   </[object Object]>
-  <p>
-    £1.00
-    -
-    1st Jan, 1970
-  </p>
-  <button
-    onClick={[Function]}
-  >
-    Delete
-  </button>
 </div>
 `;

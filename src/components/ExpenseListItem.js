@@ -11,20 +11,22 @@ numeral.locale('en-gb');
 export const ExpenseListItem = ({dispatch,description,amount,createdAt,id}) => {
   const link = `/edit/${ id }`;
   return (
-    <div >
-      <Link to = { link }>
-        <h5>{ description }</h5>
+    <div>
+      <Link className='list-item' to = { link }>
+        <div>
+          <h3 className='list-item__title'>{ description }</h3>
+          <span className='list-item__subtitle'>{ moment(createdAt).format('Do MMM, YYYY') }</span>
+        </div>
+        <h3 className='list-item__amount'>{ numeral(amount/100).format('$0,0.00') }</h3>
       </Link>
-      <p>
-        { numeral(amount/100).format('$0,0.00') }
-         -
-        { moment(createdAt).format('Do MMM, YYYY') }
-      </p>
-      <button onClick = {() => {
-        dispatch(startRemoveExpense({ id }));
-      }}>Delete</button>
     </div>
   );
 };
 
 export default connect()(ExpenseListItem);
+
+
+// Previously after Link:
+//       <button className='button button--tertiary' onClick = {() => {
+//         dispatch(startRemoveExpense({ id }));
+//       }}>Delete</button>
