@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-app",
+  "name": "Expensify app",
   "version": "1.0.0",
-  "description": "Lorem ipsum",
+  "description": "Tracks expenses for multiple users.",
   "main": "index.js",
   "author": "James Backhouse",
   "license": "MIT",
