@@ -14,10 +14,19 @@ export default ((expenses, {text, sortBy, startDate, endDate}) => {   // deconst
 
     return textMatch && startDateMatch && endDateMatch;   // only match items matching all filters
   }).sort((a,b) => {
-    if(sortBy === 'date') {
-      return a.createdAt < b.createdAt ? 1 : -1   // most recent first
-    } else if (sortBy === 'amount') {
-      return a.amount < b.amount ? 1 : -1   // high to low
+    switch(sortBy) {
+      case 'dateNewest':
+        return a.createdAt < b.createdAt ? 1 : -1
+      case 'dateOldest':
+        return a.createdAt > b.createdAt ? 1 : -1
+      case 'amountAsc':
+        return a.amount > b.amount ? 1 : -1
+      case 'amountDesc':
+        return a.amount < b.amount ? 1 : -1
+      case 'nameAsc':
+        return a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
+      case 'nameDesc':
+        return a.description.toLowerCase() < b.description.toLowerCase() ? 1 : -1
     }
   })
 })

@@ -1,6 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import {
+  setTextFilter,
+  // sortByAmountAsc,
+  // sortByAmountDesc,
+  // sortByDateNewest,
+  // sortByDateOldest,
+  setStartDate,
+  setEndDate
+} from '../actions/filters';
 import { DateRangePicker } from 'react-dates';
 
 export class ExpenseListFilter extends React.Component {
@@ -35,19 +43,6 @@ export class ExpenseListFilter extends React.Component {
           </div>
           
           <div className='input-group__item'>
-            <select
-              className='select'
-              value = { this.props.filters.sortBy }
-              onChange = {(e) =>{
-                e.target.value === 'date' ? this.props.sortByDate() : this.props.sortByAmount();
-              }}
-            >
-              <option value='date'>Date (most recent first)</option>
-              <option value='amount'>Amount (high - low)</option>
-            </select>
-          </div>
-          
-          <div className='input-group__item'>
             <DateRangePicker
               startDate = { this.props.filters.startDate }
               endDate = { this.props.filters.endDate }
@@ -76,10 +71,40 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate)),
-    sortByDate: () => dispatch(sortByDate()),
-    sortByAmount: () => dispatch(sortByAmount()),
+    // sortByDateNewest: () => dispatch(sortByDateNewest()),
+    // sortByDateOldest: () => dispatch(sortByDateOldest()),
+    // sortByAmountAsc: () => dispatch(sortByAmountAsc()),
+    // sortByAmountDesc: () => dispatch(sortByAmountDesc()),
     setTextFilter: (text) => dispatch(setTextFilter(text))
   }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilter);
+
+
+
+// LEGACY - selector for sort by
+
+// <div className='input-group__item'>
+//   <select
+//     className='select'
+//     value = { this.props.filters.sortBy }
+//     onChange = {(e) => {
+//       switch(e.target.value) {
+//         case 'dateNewest':
+//           return this.props.sortByDateNewest()
+//         case 'dateOldest':
+//           return this.props.sortByDateOldest()
+//         case 'amountAsc':
+//           return this.props.sortByAmountAsc()
+//         case 'amountDesc':
+//           return this.props.sortByAmountDesc()
+//       }
+//     }}
+//   >
+//     <option value='dateNewest'>Date (most recent first)</option>
+//     <option value='dateOldest'>Date (oldest first)</option>
+//     <option value='amountDesc'>Amount (high - low)</option>
+//     <option value='amountAsc'>Amount (low - high)</option>
+//   </select>
+// </div>

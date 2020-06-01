@@ -15,15 +15,35 @@ export default (state = filterReducerDefault, action) => {
         ...state,
         text: action.text
       }
-    case 'SORT_BY_AMOUNT':
+    case 'SORT_BY_AMOUNT_ASCENDING':
       return {
         ...state,
-        sortBy: 'amount'
+        sortBy: 'amountAsc'
       }
-    case 'SORT_BY_DATE':
+    case 'SORT_BY_AMOUNT_DESCENDING':
       return {
         ...state,
-        sortBy: 'date'
+        sortBy: 'amountDesc'
+      }
+    case 'SORT_BY_DATE_NEWEST':
+      return {
+        ...state,
+        sortBy: 'dateNewest'
+      }
+    case 'SORT_BY_DATE_OLDEST':
+      return {
+        ...state,
+        sortBy: 'dateOldest'
+      }
+    case 'SORT_BY_NAME_ASCENDING':
+      return {
+        ...state,
+        sortBy: 'nameAsc'
+      }
+    case 'SORT_BY_NAME_DESCENDING':
+      return {
+        ...state,
+        sortBy: 'nameDesc'
       }
     case 'SET_START_DATE':
       return {

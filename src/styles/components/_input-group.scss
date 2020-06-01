@@ -1,10 +1,10 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: $m-size;
+  margin: $m-size 0;
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
-    margin-bottom: $l-size;
+    margin: $l-size 0;
   }
 }
 

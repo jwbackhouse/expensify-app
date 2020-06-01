@@ -1,5 +1,5 @@
 {
-  "name": "Expensify app",
+  "name": "Expensify-app",
   "version": "1.0.0",
   "description": "Tracks expenses for multiple users.",
   "main": "index.js",

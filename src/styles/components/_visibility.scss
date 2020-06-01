@@ -1,4 +1,7 @@
 .show-for-mobile {
+  align-items: center;
+  display: flex;
+  justify-content: left;
   @media (min-width: $desktop-breakpoint) {
     display: none;
   }
@@ -7,6 +10,12 @@
 .show-for-desktop {
   display: none;
   @media (min-width: $desktop-breakpoint) {
-    display: block;
+    align-items: center;
+    display: flex;
+    justify-content: left;
   }
+}
+
+.show-for-desktop--primary {
+  width: 50%;
 }
