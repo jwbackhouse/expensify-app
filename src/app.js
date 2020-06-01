@@ -36,7 +36,7 @@ const renderApp = () => {
 // Render loading page
 ReactDOM.render(<LoadingPage />,document.getElementById('body'));
 
-// Authenticate user
+// Respond to Firebase login
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('Logged in.')
