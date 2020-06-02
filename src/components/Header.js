@@ -4,21 +4,28 @@ import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 
 
-export const Header = ({startLogout}) => (
+export const Header = ({startLogout, auth}) => (
   <div className='header'>
     <div className='content-container'>
       <div className='header__content'>
         <Link className='header__title' to='/dashboard'>
           <h1>Expensify</h1>
         </Link>
-        <button className='button button--link' onClick={ startLogout }>Logout</button>
+        <div>
+          <span>{ auth.displayName }</span>
+          <button className='button--link' onClick={ startLogout }>Logout</button>
+        </div>
       </div>
     </div>
   </div>
 );
 
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout())
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

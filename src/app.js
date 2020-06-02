@@ -39,8 +39,8 @@ ReactDOM.render(<LoadingPage />,document.getElementById('body'));
 // React to user logged in status
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('Logged in.')
-    store.dispatch(login(user.uid))   // This dispatch called here rather than inside startLogin so that it runs when app first loads, not just when user explictly logs in/out
+    console.log('Logged in.', user)
+    store.dispatch(login(user.uid, user.displayName))   // This dispatch called here rather than inside startLogin so that it runs when app first loads, not just when user explictly logs in/out
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {

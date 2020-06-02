@@ -6,9 +6,10 @@ import {
 } from '../firebase/firebase';
 
 // NOTE this is called in app.js rather than startLogin so that it runs when app first loads, not just when user explictly logs in/out
-export const login = (uid) => ({
+export const login = (uid, displayName) => ({
   type:'LOGIN',
-  uid
+  uid,
+  displayName
 });
 
 export const startLogin = () => {
