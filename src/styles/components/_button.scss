@@ -20,9 +20,15 @@
     @extend .button;
     margin-bottom: $s-size;
   }
-  &--secondary {
+  &--secondary-grey {
     @extend .button;
     background: $mid-grey;
+    margin-right: $s-size;
+  }
+  &--secondary-green {
+    @extend .button;
+    background: $green;
+    margin-right: $s-size;
   }
   &--tertiary {
     @extend .button;

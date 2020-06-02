@@ -1,17 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
+import DeleteModal from './DeleteModal';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditPage extends React.Component {
-  onSubmit = (expense) => {
-    this.props.startEditExpense(this.props.expense.id, expense);    // Edit expense
-    this.props.history.push('/')   // Redirect on submit (uses in-built method)
+  state = {
+    showModal: false
   };
   
-  onRemove = () => {
-    this.props.startRemoveExpense(this.props.expense.id);    // Delete expense
+  onSubmit = (expense) => {
+    this.props.startEditExpense(this.props.expense.id, expense);    // Edit expense
     this.props.history.push('/');   // Redirect on submit (uses in-built method)
+  };
+  
+  onClickDelete = () => {
+    this.setState(() => ({ showModal: true }));
+  };
+  
+  onClickCancel = () => {
+    this.props.history.push('/');
+  };
+  
+  onModalConfirm = () => {
+    this.props.startRemoveExpense(this.props.expense.id);    // Delete expense
+    this.setState(() => ({showModal: false}));
+    this.props.history.push('/');   // Redirect on submit (uses in-built method)
+  };
+  
+  onModalCancel = () => {
+    this.setState(() => ({showModal: false}));
   };
   
   render() {
@@ -28,11 +46,18 @@ export class EditPage extends React.Component {
             buttonText = { 'Save changes' }
             onSubmit = { this.onSubmit }
           />
-          <button
-            className='button--secondary'
-            onClick = { this.onRemove }
-          >Delete</button>
+          <div>
+            <button
+              className='button--secondary-green'
+              onClick = { this.onClickDelete }
+            >Delete</button>
+            <button
+              className='button--secondary-grey'
+              onClick = { this.onClickCancel }
+            >Cancel</button>
+          </div>
         </div>
+        <DeleteModal onModalConfirm={ this.onModalConfirm } onModalCancel={ this.onModalCancel } showModal={this.state.showModal} />
       </div>
     );
   };
