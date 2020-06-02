@@ -19,27 +19,20 @@ const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
-export { firebase, googleAuthProvider, facebookAuthProvider, database as default };
-
-
-// Email auth settings
-var actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be whitelisted in the Firebase Console.
-  url: 'https://www.example.com/finishSignUp?cartId=1234',
+// Email link authorisation settings
+const protocol = window.location.protocol;
+const host = window.location.host;
+const actionCodeSettings = {
+  // URL you want to redirect back to
+  url: `${ protocol }//${ host }/confirm`,
   // This must be true.
   handleCodeInApp: true,
-  // // Define in-app email programmes to use
-  // iOS: {
-  //   bundleId: 'com.example.ios'
-  // },
-  // android: {
-  //   packageName: 'com.example.android',
-  //   installApp: true,
-  //   minimumVersion: '12'
-  // },
-  // dynamicLinkDomain: 'example.page.link'
+  // Other settings required for apps (see docs)
 };
+
+export { firebase, googleAuthProvider, facebookAuthProvider, actionCodeSettings, database as default };
+
+
 
 // firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
 //   .then(function() {

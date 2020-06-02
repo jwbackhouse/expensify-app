@@ -36,7 +36,7 @@ const renderApp = () => {
 // Render loading page
 ReactDOM.render(<LoadingPage />,document.getElementById('body'));
 
-// Respond to Firebase login
+// React to user logged in status
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('Logged in.')
@@ -51,7 +51,7 @@ firebase.auth().onAuthStateChanged((user) => {
     console.log('Logged out.')
     store.dispatch(logout());
     renderApp();
-    history.push('/');
+    // history.push('/');
   }
 });
 

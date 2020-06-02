@@ -2,6 +2,7 @@ import React from 'react';
 import {Router, Route, Switch, Link, NavLink} from 'react-router-dom';
 import { createBrowserHistory } from 'history';   // This allows us to access history outside a component - in this case for the Firebase login in app.js
 import AddExpensePage from '../components/AddExpensePage';
+import ConfirmPage from '../components/ConfirmPage';
 import DashboardPage from '../components/DashboardPage';
 import EditPage from '../components/EditPage';
 import ErrorPage from '../components/ErrorPage';
@@ -16,6 +17,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute exact path='/' component={LoginPage} />
+        <PublicRoute path='/confirm' component={ConfirmPage} />
         <PrivateRoute path='/dashboard' component={DashboardPage} />
         <PrivateRoute path='/create' component={AddExpensePage} />
         <PrivateRoute path='/edit/:id' component={EditPage} />

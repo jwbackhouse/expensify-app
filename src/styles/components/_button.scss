@@ -10,24 +10,33 @@
   line-height: 1;   // for links
   padding: $s-size;
   text-decoration: none;    // for links
-}
-
-.button--link {
-  background: none;
-  color: $pink;
-}
-
-.button--login {
-  margin-bottom: $s-size;
-}
-
-.button--secondary {
-  background: $mid-grey;
-}
-
-.button--tertiary {
-  background: $mid-grey;
-  font-size: $font-medium;
-  margin-top: $s-size;
-  padding: $xs-size;
+  
+  &--link {
+    @extend .button;
+    background: none;
+    color: $pink;
+  }
+  &--login {
+    @extend .button;
+    margin-bottom: $s-size;
+  }
+  &--secondary {
+    @extend .button;
+    background: $mid-grey;
+  }
+  &--tertiary {
+    @extend .button;
+    background: $mid-grey;
+    font-size: $font-medium;
+    margin-top: $s-size;
+    padding: $xs-size;
+  }
+  
+  &--tertiary-pink{
+    @extend .button;
+    background: $pink;
+    font-size: $font-medium;
+    margin-top: $s-size;
+    padding: $xs-size;
+  }
 }

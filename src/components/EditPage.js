@@ -29,7 +29,7 @@ export class EditPage extends React.Component {
             onSubmit = { this.onSubmit }
           />
           <button
-            className='button button--secondary'
+            className='button--secondary'
             onClick = { this.onRemove }
           >Delete</button>
         </div>

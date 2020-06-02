@@ -1,4 +1,9 @@
-import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebase';
+import {
+  firebase,
+  googleAuthProvider,
+  facebookAuthProvider,
+  actionCodeSettings
+} from '../firebase/firebase';
 
 // NOTE this is called in app.js rather than startLogin so that it runs when app first loads, not just when user explictly logs in/out
 export const login = (uid) => ({
@@ -22,22 +27,19 @@ export const startFacebookLogin = () => {
   };
 };
 
-
-// export const startEmailLogin = () => {
-//   return () => {
-//     return firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-//       .then(() => {
-//         console.log('sent successfully');
-//         // The link was successfully sent. Inform the user.
-//         // Save the email locally so you don't need to ask the user for it again
-//         // if they open the link on the same device.
-//         window.localStorage.setItem('emailForSignIn', email);
-//       })
-//       .catch((error) => {
-//         console.log('Error'); // Some error occurred, you can inspect the code: error.code
-//       });
-//   };
-// };
+export const startEmailLogin = (email) => {
+  return () => {
+    return firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+      .then(() => {
+        console.log('sent successfully');
+        // Save email locally so you don't need to ask the user for it again if they open the link on the same device.
+        window.localStorage.setItem('emailForSignIn', email);
+      })
+      .catch((error) => {
+        console.log('Error:', error.code);
+      });
+  };
+};
 
 export const logout = () => ({
     type:'LOGOUT',
