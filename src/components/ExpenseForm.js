@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import NumberFormat from 'react-number-format';
 
 export default class ExpenseForm extends React.Component {
   // Populate fields if data passed on EditPage, otherwise leave blank for AddExpensePage
@@ -26,8 +27,8 @@ export default class ExpenseForm extends React.Component {
   };
   
   // Ditto for amount
-  onAmountChange = (e) => {
-    const amount = e.target.value;
+  onAmountChange = (values) => {
+    const amount = values.value;
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {    // Allow no entry || Enforce max two decimal places
       this.setState(() => ({amount}));
     }
@@ -74,12 +75,18 @@ export default class ExpenseForm extends React.Component {
             onChange = {this.onDescriptionChange}
             autoFocus
           />
-          <input
-            type = 'text'
+          <NumberFormat
+            value={ this.state.amount }
             className='text-input'
+            onValueChange = { this.onAmountChange }
             placeholder = 'Amount'
-            value = { this.state.amount }
-            onChange = { this.onAmountChange }
+            // Formatting options
+            allowEmptyFormatting={false}
+            decimalScale={2}
+            fixedDecimalScale={false}   // Set to true to always show decimal places
+            isNumericString={ true }    // Needed to accept state values
+            prefix={'£'}
+            thousandSeparator={true}
           />
           <SingleDatePicker
             date = { this.state.createdAt }
