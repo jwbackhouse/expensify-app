@@ -6,23 +6,27 @@ exports[`Should render ExpenseListItem from a test expense 1`] = `
     className="list-item"
     to="/edit/123"
   >
-    <div>
-      <h3
-        className="list-item__title"
-      >
+    <div
+      className="list-item__title"
+    >
+      <h3>
         one
       </h3>
-      <span
-        className="list-item__subtitle"
-      >
+    </div>
+    <div
+      className="list-item__date"
+    >
+      <span>
         1st Jan, 1970
       </span>
     </div>
-    <h3
+    <div
       className="list-item__amount"
     >
-      £1.00
-    </h3>
+      <h3>
+        £1.00
+      </h3>
+    </div>
   </[object Object]>
 </div>
 `;

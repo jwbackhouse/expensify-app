@@ -6,7 +6,7 @@ test('Should set default filter values', () => {
   const state = filterReducer(undefined, {type: '@@INIT'});   // @@INIT is the way redux sets itself up
   expect(state).toEqual({
    text: '',
-    sortBy: 'date',
+    sortBy: 'dateNewest',
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month'),
   });
@@ -21,27 +21,27 @@ test('Should update text filter', () => {
   expect(state.text).toEqual(input.text);
 });
 
-test('Should change sort by to amount', () => {
+test('Should change sort by to amount descending', () => {
   const input = {
-    type: 'SORT_BY_AMOUNT',
+    type: 'SORT_BY_AMOUNT_DESCENDING',
   };
   const state = filterReducer(undefined, input);
-  expect(state.sortBy).toEqual('amount');
+  expect(state.sortBy).toEqual('amountDesc');
 });
 
-test('Should change sort by to date', () => {
+test('Should change sort by to date, newest first', () => {
   // Set sortBy to amount (by default is already set as date)
   const dummyFilters = {
     text: 'abc',
-    sortBy: 'amount',
+    sortBy: 'amountAsc',
     startDate: undefined,
     endDate: undefined
   };
   const input = {
-    type: 'SORT_BY_DATE',
+    type: 'SORT_BY_DATE_NEWEST',
   };
   const state = filterReducer(dummyFilters, input);
-  expect(state.sortBy).toEqual('date');
+  expect(state.sortBy).toEqual('dateNewest');
 });
 
 test('Should change start date', () => {

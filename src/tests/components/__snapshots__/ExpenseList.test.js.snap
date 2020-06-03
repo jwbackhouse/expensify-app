@@ -13,14 +13,52 @@ exports[`Should render ExpenseList with empty message 1`] = `
       Expenses
     </div>
     <div
-      className="show-for-desktop"
+      className="show-for-desktop show-for-desktop--primary"
+      id="sortByName"
     >
       Expense
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
     </div>
     <div
       className="show-for-desktop"
+      id="sortByDate"
+    >
+      Date created
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
+    </div>
+    <div
+      className="show-for-desktop"
+      id="sortByAmount"
     >
       Amount
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
     </div>
   </div>
   <div
@@ -37,7 +75,7 @@ exports[`Should render ExpenseList with empty message 1`] = `
 </div>
 `;
 
-exports[`Should render ExpenseList with testExpenses 1`] = `
+exports[`Test with all expenses Should render ExpenseList with testExpenses 1`] = `
 <div
   className="content-container"
 >
@@ -50,14 +88,52 @@ exports[`Should render ExpenseList with testExpenses 1`] = `
       Expenses
     </div>
     <div
-      className="show-for-desktop"
+      className="show-for-desktop show-for-desktop--primary"
+      id="sortByName"
     >
       Expense
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
     </div>
     <div
       className="show-for-desktop"
+      id="sortByDate"
+    >
+      Date created
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
+    </div>
+    <div
+      className="show-for-desktop"
+      id="sortByAmount"
     >
       Amount
+      <img
+        className="arrow arrow--up"
+        onClick={[Function]}
+        src="/images/arrow-up.jpg"
+      />
+      <img
+        className="arrow arrow--down"
+        onClick={[Function]}
+        src="/images/arrow-down.jpg"
+      />
     </div>
   </div>
   <div

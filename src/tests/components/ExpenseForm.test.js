@@ -50,20 +50,21 @@ test('Should update state note on input change', () => {
 
 // Amount field
 test('Should update state amount using valid input', () => {
-  const value = '12.34';
+  // Have to pass in values object to NumberFormat
+  const values = {
+    value: '12.34'
+  };
   const wrapper = shallow(<ExpenseForm />);
-  wrapper.find('input').at(1).simulate('change', {
-    target: {value}    // pass second argument for 'e.target.value'
-  });
-  expect(wrapper.state('amount')).toBe(value);
+  wrapper.find('NumberFormat').prop('onValueChange')(values);
+  expect(wrapper.state('amount')).toBe(values.value);
 });
 
 test('Should NOT update state amount with invalid input', () => {
-  const value = '56.789';
+  const values = {
+    value: '56.789'
+  };
   const wrapper = shallow(<ExpenseForm />);
-  wrapper.find('input').at(1).simulate('change', {
-    target: {value}    // pass second argument for 'e.target.value'
-  });
+  wrapper.find('NumberFormat').prop('onValueChange')(values);
   expect(wrapper.state('amount')).toBe('');
 });
 

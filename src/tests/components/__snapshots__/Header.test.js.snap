@@ -18,12 +18,17 @@ exports[`Should render Header correctly 1`] = `
           Expensify
         </h1>
       </[object Object]>
-      <button
-        className="button button--link"
-        onClick={[MockFunction]}
-      >
-        Logout
-      </button>
+      <div>
+        <span>
+          James
+        </span>
+        <button
+          className="button button--link"
+          onClick={[MockFunction]}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -78,6 +78,7 @@ export default class ExpenseForm extends React.Component {
           <NumberFormat
             value={ this.state.amount }
             className='text-input'
+            id='amount-input'
             onValueChange = { this.onAmountChange }
             placeholder = 'Amount'
             // Formatting options

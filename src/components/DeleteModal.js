@@ -20,11 +20,13 @@ export class DeleteModal extends React.Component {
         <h3 className='modal__title'>Are you sure you want to delete this expense?</h3>
         <button
           className='button button--green button--margin-right'
+          id='confirm'
           onClick={this.props.onModalConfirm}
         >Yes</button>
         <button
           className='button button--grey'
           onClick={ this.props.onModalCancel }
+          id='cancel'
         >No</button>
       </Modal>
     );

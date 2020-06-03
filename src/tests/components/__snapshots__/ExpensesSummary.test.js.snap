@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render correct message for multiple expenses 1`] = `
+exports[`Should render correct message for multiple expenses with none hidden 1`] = `
 <div
   className="page-header"
 >
@@ -25,17 +25,17 @@ exports[`Should render correct message for multiple expenses 1`] = `
       className="page-header__actions"
     >
       <[object Object]
-        className="button"
+        className="button button--pink"
         to="/create"
       >
-        Add Expense
+        Add expense
       </[object Object]>
     </div>
   </div>
 </div>
 `;
 
-exports[`Should render correct message for single expense 1`] = `
+exports[`Should render correct message for single expense with two hidden 1`] = `
 <div
   className="page-header"
 >
@@ -56,14 +56,25 @@ exports[`Should render correct message for single expense 1`] = `
         £1.00
       </span>
     </h1>
+    <p
+      className="page-header__subtitle"
+    >
+      (
+      2
+       hidden 
+      expenses
+       totalling 
+      £2.10
+       not showing)
+    </p>
     <div
       className="page-header__actions"
     >
       <[object Object]
-        className="button"
+        className="button button--pink"
         to="/create"
       >
-        Add Expense
+        Add expense
       </[object Object]>
     </div>
   </div>

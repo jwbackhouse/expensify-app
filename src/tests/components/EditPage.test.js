@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { EditPage } from '../../components/EditPage';
+import { DeleteModal } from '../../components/DeleteModal';
 import testExpenses from '../fixtures/testExpenses';
 
 // Run for each test
@@ -24,14 +25,19 @@ test('Should render EditPage', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test('Should handle onSubmit to edit an expense', () => {
+test('Should handle onSubmit to edit an expense.', () => {
   wrapper.find('ExpenseForm').prop('onSubmit')(testExpenses[0]);
   expect(history.push).lastCalledWith('/');
   expect(startEditExpense).lastCalledWith(testExpenses[0].id, testExpenses[0]);
 })
 
-test('Should handle onClick to remove expense', () => {
-  wrapper.find('button').simulate('click');
-  expect(history.push).lastCalledWith('/');
-  expect(startRemoveExpense).lastCalledWith(testExpenses[0].id);
+test('Should open modal when clicking delete.', () => {
+  wrapper.find('#deleteButton').simulate('click');
+  expect(wrapper.state('showModal')).toBe(true);
 })
+// test('Should handle onModalConfirm to remove expense', () => {
+//   wrapper = shallow(<DeleteModal />)
+//   wrapper.find('#confirm').simulate('click');
+//   expect(startRemoveExpense).lastCalledWith(testExpenses[0].id);
+//   expect(history.push).lastCalledWith('/');
+// })

@@ -49,10 +49,12 @@ export class EditPage extends React.Component {
           <div>
             <button
               className='button button--pink button--margin-right'
+              id='deleteButton'
               onClick = { this.onClickDelete }
             >Delete</button>
             <button
               className='button button--grey'
+              id='cancelButton'
               onClick = { this.onClickCancel }
             >Cancel</button>
           </div>

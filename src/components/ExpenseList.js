@@ -18,7 +18,7 @@ export const ExpenseList = (props) => (
       <div className='show-for-mobile'>
         Expenses
       </div>
-      <div className='show-for-desktop show-for-desktop--primary'>
+      <div className='show-for-desktop show-for-desktop--primary' id='sortByName'>
         Expense
         <img
           className='arrow arrow--up'
@@ -31,7 +31,7 @@ export const ExpenseList = (props) => (
           src='/images/arrow-down.jpg'
         />
       </div>
-      <div className='show-for-desktop'>
+      <div className='show-for-desktop' id='sortByDate'>
         Date created
         <img
           className='arrow arrow--up'
@@ -44,7 +44,7 @@ export const ExpenseList = (props) => (
           src='/images/arrow-down.jpg'
         />
       </div>
-      <div className='show-for-desktop'>
+      <div className='show-for-desktop' id='sortByAmount'>
         Amount
         <img
           className='arrow arrow--up'

@@ -5,8 +5,11 @@ import { firebase } from '../../firebase/firebase';
 
 let startLogout, wrapper;
 beforeEach(() => {
+  const auth = {
+    displayName: 'James'
+  }
   startLogout = jest.fn();
-  wrapper = shallow(<Header startLogout={startLogout} />);
+  wrapper = shallow(<Header startLogout={ startLogout } auth={ auth }/>);
 });
 
 test('Should render Header correctly', () => {

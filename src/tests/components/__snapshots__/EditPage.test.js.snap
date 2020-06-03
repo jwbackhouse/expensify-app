@@ -30,12 +30,27 @@ exports[`Should render EditPage 1`] = `
       }
       onSubmit={[Function]}
     />
-    <button
-      className="button button--secondary"
-      onClick={[Function]}
-    >
-      Delete
-    </button>
+    <div>
+      <button
+        className="button button--pink button--margin-right"
+        id="deleteButton"
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+      <button
+        className="button button--grey"
+        id="cancelButton"
+        onClick={[Function]}
+      >
+        Cancel
+      </button>
+    </div>
   </div>
+  <DeleteModal
+    onModalCancel={[Function]}
+    onModalConfirm={[Function]}
+    showModal={false}
+  />
 </div>
 `;

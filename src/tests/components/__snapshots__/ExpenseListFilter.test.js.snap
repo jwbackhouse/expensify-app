@@ -21,26 +21,6 @@ exports[`Should render ExpenseListFilter page 1`] = `
     <div
       className="input-group__item"
     >
-      <select
-        className="select"
-        onChange={[Function]}
-        value="date"
-      >
-        <option
-          value="date"
-        >
-          Date (most recent first)
-        </option>
-        <option
-          value="amount"
-        >
-          Amount (high - low)
-        </option>
-      </select>
-    </div>
-    <div
-      className="input-group__item"
-    >
       <DateRangePicker
         anchorDirection="left"
         customArrowIcon={null}
@@ -146,26 +126,6 @@ exports[`Should render ExpenseListFilter page using alt filters 1`] = `
         type="text"
         value="a"
       />
-    </div>
-    <div
-      className="input-group__item"
-    >
-      <select
-        className="select"
-        onChange={[Function]}
-        value="amount"
-      >
-        <option
-          value="date"
-        >
-          Date (most recent first)
-        </option>
-        <option
-          value="amount"
-        >
-          Amount (high - low)
-        </option>
-      </select>
     </div>
     <div
       className="input-group__item"

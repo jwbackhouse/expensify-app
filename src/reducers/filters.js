@@ -3,7 +3,7 @@ import moment from 'moment';
 // Filters reducer
 const filterReducerDefault = {
   text: '',
-  sortBy: 'date',
+  sortBy: 'dateNewest',
   startDate: moment().startOf('month'),    // Set default start date to beginning of month
   endDate: moment().endOf('month'),    // Ditto for end date
 };

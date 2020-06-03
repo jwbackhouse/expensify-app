@@ -1,7 +1,8 @@
 import {
   setTextFilter,
-  sortByAmount,
-  sortByDate,
+  sortByAmountAsc,
+  sortByDateNewest,
+  sortByNameDesc,
   setStartDate,
   setEndDate
 } from '../../actions/filters';
@@ -23,17 +24,24 @@ test('Should setup set_end_date action object', () => {
   });
 });
 
-test('Should setup sort_by_date action object', () => {
-  const action = sortByDate();
+test('Should setup sort_by_date_newest action object', () => {
+  const action = sortByDateNewest();
   expect(action).toEqual({
-    type: 'SORT_BY_DATE'
+    type: 'SORT_BY_DATE_NEWEST'
   });
 });
 
-test('Should setup sort_by_amount action object', () => {
-  const action = sortByAmount();
+test('Should setup sort_by_amount_ascending action object', () => {
+  const action = sortByAmountAsc();
   expect(action).toEqual({
-    type: 'SORT_BY_AMOUNT'
+    type: 'SORT_BY_AMOUNT_ASCENDING'
+  });
+});
+
+test('Should setup sort_by_description_descending action object', () => {
+  const action = sortByNameDesc();
+  expect(action).toEqual({
+    type: 'SORT_BY_NAME_DESCENDING'
   });
 });
 

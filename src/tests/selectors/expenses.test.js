@@ -6,7 +6,7 @@ import expenses from '../fixtures/testExpenses';    // Import dummy expenses arr
 test('Should filter based on text search', () => {
   const filters = {
     text: 't',
-    sortBy: 'date',
+    sortBy: 'dateNewest',
     startDate: undefined,
     endDate: undefined
   };
@@ -17,7 +17,7 @@ test('Should filter based on text search', () => {
 test('Should filter by start date', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'dateNewest',
     startDate: moment(0),
     endDate: undefined
   };
@@ -28,7 +28,7 @@ test('Should filter by start date', () => {
 test('Should filter by end date', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'dateNewest',
     startDate: undefined,
     endDate: moment(0)
   };
@@ -36,10 +36,21 @@ test('Should filter by end date', () => {
   expect(output).toEqual([expenses[0], expenses[1]]);
 });
 
-test('Should sort by amount', () => {
+test('Should sort by amount ascending', () => {
   const filters = {
     text: '',
-    sortBy: 'amount',
+    sortBy: 'amountAsc',
+    startDate: undefined,
+    endDate: undefined
+  };
+  const output = viewVisible(expenses,filters);
+  expect(output).toEqual([expenses[2], expenses[0], expenses[1]]);
+});
+
+test('Should sort by date, old first', () => {
+  const filters = {
+    text: '',
+    sortBy: 'dateOldest',
     startDate: undefined,
     endDate: undefined
   };
@@ -47,13 +58,13 @@ test('Should sort by amount', () => {
   expect(output).toEqual([expenses[1], expenses[0], expenses[2]]);
 });
 
-test('Should sort by date', () => {
+test('Should sort by name A-Z', () => {
   const filters = {
     text: '',
-    sortBy: 'date',
+    sortBy: 'nameAsc',
     startDate: undefined,
     endDate: undefined
   };
   const output = viewVisible(expenses,filters);
-  expect(output).toEqual([expenses[2], expenses[0], expenses[1]]);
+  expect(output).toEqual([expenses[0], expenses[2], expenses[1]]);
 });

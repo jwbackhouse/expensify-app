@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   setTextFilter,
-  // sortByAmountAsc,
-  // sortByAmountDesc,
-  // sortByDateNewest,
-  // sortByDateOldest,
   setStartDate,
   setEndDate
 } from '../actions/filters';
@@ -71,10 +67,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate)),
-    // sortByDateNewest: () => dispatch(sortByDateNewest()),
-    // sortByDateOldest: () => dispatch(sortByDateOldest()),
-    // sortByAmountAsc: () => dispatch(sortByAmountAsc()),
-    // sortByAmountDesc: () => dispatch(sortByAmountDesc()),
     setTextFilter: (text) => dispatch(setTextFilter(text))
   }
 };
