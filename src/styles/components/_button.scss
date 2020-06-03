@@ -1,5 +1,4 @@
 .button {
-  background: $pink;
   border-radius: 2px;
   border: none;
   color: $white;
@@ -10,39 +9,43 @@
   line-height: 1;   // for links
   padding: $s-size;
   text-decoration: none;    // for links
-  
-  &--link {
-    @extend .button;
-    background: none;
-    color: $pink;
-  }
-  &--login {
-    @extend .button;
-    margin-bottom: $s-size;
-  }
-  &--secondary-grey {
-    @extend .button;
-    background: $mid-grey;
-    margin-right: $s-size;
-  }
-  &--secondary-green {
-    @extend .button;
-    background: $green;
-    margin-right: $s-size;
-  }
-  &--tertiary {
-    @extend .button;
-    background: $mid-grey;
-    font-size: $font-medium;
-    margin-top: $s-size;
-    padding: $xs-size;
-  }
-  
-  &--tertiary-pink{
-    @extend .button;
-    background: $pink;
-    font-size: $font-medium;
-    margin-top: $s-size;
-    padding: $xs-size;
-  }
+}
+
+.button--link {
+  background: none;
+  color: $pink;
+}
+
+.button--login {
+  margin-bottom: $s-size;
+}
+
+.button--grey {
+  background: $mid-grey;
+}
+
+.button--green {
+  background: $green;
+}
+
+.button--pink {
+  background: $pink;
+}
+
+.button--tertiary {
+  font-size: $font-medium;
+  padding: $xs-size;
+}
+
+.button--tertiary {
+  font-size: $font-medium;
+  padding: $xs-size;
+}
+
+.button--margin-right {
+  margin-right: $s-size;
+}
+
+.button--margin-top {
+  margin-top: $s-size;
 }

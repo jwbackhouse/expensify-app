@@ -13,15 +13,17 @@ export class DeleteModal extends React.Component {
       <Modal
         isOpen={!!this.props.showModal}
         onRequestClose={this.props.onModalCancel}   // Allows esc / clicking background to close modal
-        contentLabel="Just to check..."
+        contentLabel='Just to check...'
+        closeTimeoutMS={ 200 }    // Allows us to target the before-close class to apply a transition
+        className='modal'
       >
-        <h3>Are you sure you want to delete this expense?</h3>
+        <h3 className='modal__title'>Are you sure you want to delete this expense?</h3>
         <button
-          className='button--secondary'
+          className='button button--green button--margin-right'
           onClick={this.props.onModalConfirm}
         >Yes</button>
         <button
-          className='button--secondary'
+          className='button button--grey'
           onClick={ this.props.onModalCancel }
         >No</button>
       </Modal>

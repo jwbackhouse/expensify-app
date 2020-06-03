@@ -71,7 +71,7 @@ export class ConfirmPage extends React.Component {
               value={this.state.email}
               onChange={this.onEmailChange}
             />
-            <button className="button--tertiary-pink">Confirm</button>
+            <button className="button button--tertiary button--pink">Confirm</button>
           </form>
         </div>
       )

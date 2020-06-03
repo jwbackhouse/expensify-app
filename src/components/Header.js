@@ -13,7 +13,7 @@ export const Header = ({startLogout, auth}) => (
         </Link>
         <div>
           <span>{ auth.displayName }</span>
-          <button className='button--link' onClick={ startLogout }>Logout</button>
+          <button className='button button--link' onClick={ startLogout }>Logout</button>
         </div>
       </div>
     </div>

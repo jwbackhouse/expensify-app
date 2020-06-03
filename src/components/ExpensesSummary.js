@@ -30,7 +30,7 @@ export const ExpensesSummary = (props) => {
             ({ hiddenNumber } hidden { hiddenExpenseWord } totalling { formattedHiddenTotal } not showing)
         </p> }
         <div className='page-header__actions'>
-          <Link className='button' to='/create'>Add Expense</Link>
+          <Link className='button button--pink' to='/create'>Add expense</Link>
         </div>
       </div>
     </div>

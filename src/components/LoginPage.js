@@ -55,9 +55,9 @@ export class LoginPage extends React.Component {
         <div className='box-layout__box'>
           <h1 className='box-layout__title'>Expensify</h1>
           <p>Get your expenses under control</p>
-          <button onClick = { this.props.startLogin } className ='button--login'>Login with Google</button>
-          <button onClick = { this.props.startFacebookLogin } className ='button--login'>Login with Facebook</button>
-          <button onClick = { this.showForm } className = 'button--login'>Login with email</button>
+          <button onClick = { this.props.startLogin } className ='button button--pink'>Login with Google</button>
+          <button onClick = { this.props.startFacebookLogin } className ='button button--pink button--margin-top'>Login with Facebook</button>
+          <button onClick = { this.showForm } className = 'button button--pink button--margin-top'>Login with email</button>
           <div>
             { form }
             { message }
