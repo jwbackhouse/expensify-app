@@ -1,8 +1,8 @@
 # Expenses app
 
-Built with the Udemy React course from Andrew Mead, May 2020
+Built with the Udemy React course from Andrew Mead, May 2020. Includes lots of comments & commented-out code as reference for the author.
 
-Cloud storage with Firebase
+Uses Firebase Realtime Database for cloud storage.
 
 Potential features to add:
 1) Host on custom domain and configure it with heroku
