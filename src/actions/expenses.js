@@ -1,3 +1,5 @@
+// *** ACTION CREATORS ***
+
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
@@ -15,7 +17,7 @@ export const startAddExpense = (expenseData = {}) => {
       note = '',
       amount = 0,
       createdAt = 0
-    } = expenseData;   // Using destructuring to extract data from the expenseData argument rather than doing it in function argument itself (as in commented-out ADD_EXPENSE below)
+    } = expenseData;   // Using destructuring to extract data from the expenseData argument rather than doing it in function argument itself
     const expense = { description, note, amount, createdAt };   // uses deconstructed values from expenseData
     return database.ref(`users/${ uid }/expenses`).push(expense).then((ref) => {
       dispatch(addExpense({

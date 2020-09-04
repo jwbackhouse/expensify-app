@@ -17,7 +17,7 @@ export default (state = expReducerDefault, action) => {
         if(expense.id === action.id) {
           return {
             ...expense,
-            ...action.changes
+            ...action.changes   // this over-rides the existing values for that expense
           }
         } else {
           return expense
