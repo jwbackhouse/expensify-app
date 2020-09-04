@@ -1,6 +1,6 @@
 # expensify-app
 
-Single-user expense-logging app, built in May 2020 as part of 'The Complete React Developer Course' by Andrew Mead on Udemy
+Single-user expense-logging app, built in May 2020 as part of 'The Complete React Developer Course' by Andrew Mead on Udemy.
 
 Uses Redux for local state management and Firebase RTDB for data storage.
 
