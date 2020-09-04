@@ -1,14 +1,15 @@
+// Intervening days
+.CalendarDay--selected-span {
+  background: lighten($green, 30%);
+  color: white;
+}
+
 // First day in dropdown
 .CalendarDay--selected-start {
   background: $green;
   color: white;
 }
 
-// Intervening days
-.CalendarDay--selected-span {
-  background: lighten($green, 30%);
-  color: white;
-}
 
 // Final day in dropdown
 .CalendarDay--selected-end {
@@ -16,8 +17,13 @@
   color: white;
 }
 
-// Selected input (always visible)
+// Selected input field
 .DateInput__display-text--focused {
   background: $green;
   color: white;
+}
+
+// Input field
+.DateInput {
+  font-size: $font-medium;
 }
