@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware,  } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; // allows asynchronous calls to Firebase from actions
 import expensesReducer from '../reducers/expenses';
 import filtersReducer from '../reducers/filters';
